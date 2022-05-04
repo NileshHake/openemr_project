@@ -1,0 +1,22 @@
+20220411:090417 _GET request 
+ csvtbllist => yes  csrf_token_form => 9e35d78443e799afa7d107bf3bf12fb89278a81d 
+20220411:090417 _GET request 
+ srvinfo => yes  csrf_token_form => 9e35d78443e799afa7d107bf3bf12fb89278a81d 
+20220411:090417 _GET request 
+ loglist => yes  csrf_token_form => 9e35d78443e799afa7d107bf3bf12fb89278a81d 
+20220411:090417 _GET request 
+ archlist => yes  csrf_token_form => 9e35d78443e799afa7d107bf3bf12fb89278a81d 
+20220411:090417 csv_archive_select_list: using /var/www/html/openemr/sites/default/documents/edi/history/archive
+20220411:090405 _GET request 
+ srvinfo => yes  csrf_token_form => 9e35d78443e799afa7d107bf3bf12fb89278a81d 
+20220411:090405 _GET request 
+ csvtbllist => yes  csrf_token_form => 9e35d78443e799afa7d107bf3bf12fb89278a81d 
+20220411:090405 _GET request 
+ loglist => yes  csrf_token_form => 9e35d78443e799afa7d107bf3bf12fb89278a81d 
+20220411:090405 _GET request 
+ archlist => yes  csrf_token_form => 9e35d78443e799afa7d107bf3bf12fb89278a81d 
+20220411:090405 csv_archive_select_list: using /var/www/html/openemr/sites/default/documents/edi/history/archive
+20220411:090410 _POST request 
+ csrf_token_form => 9e35d78443e799afa7d107bf3bf12fb89278a81d  NewFiles => ProcessNew 
+20220411:090410 User: 103.81.35.248 - April 11, 2022, 9:50 am
+20220411:090410 edih_upload_files: _FILES error  No file was uploaded

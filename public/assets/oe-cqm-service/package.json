@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "compression": "1.7.3",
+    "cqm-execution": "3.0.3",
+    "express": "4.16.3",
+    "winston": "3.0.0",
+    "oe-cqm-parsers": "5.5.0"
+  },
+  "deprecated": false,
+  "license": "MIT",
+  "main": "server.js",
+  "name": "oe-cqm-service",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "version": "1.0.1"
+}

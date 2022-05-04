@@ -1,0 +1,35 @@
+20220329:150336 EDI_History Setup should not overwrite existing data.<br />
+Setup: directory /var/www/html/openemr/sites/default/documents/edi<br />
+created folder /var/www/html/openemr/sites/default/documents/edi/history<br />
+created folder /var/www/html/openemr/sites/default/documents/edi/history/csv<br />
+created folder /var/www/html/openemr/sites/default/documents/edi/history/archive<br />
+created folder /var/www/html/openemr/sites/default/documents/edi/history/log<br />
+created folder /var/www/html/openemr/sites/default/documents/edi/history/tmp
+folder for f837 exists /var/www/html/openemr/sites/default/documents/edi<br />
+created type folder /var/www/html/openemr/sites/default/documents/edi/history/f997<br />
+created type folder /var/www/html/openemr/sites/default/documents/edi/history/f276<br />
+created type folder /var/www/html/openemr/sites/default/documents/edi/history/f277<br />
+created type folder /var/www/html/openemr/sites/default/documents/edi/history/f270<br />
+created type folder /var/www/html/openemr/sites/default/documents/edi/history/f271<br />
+created type folder /var/www/html/openemr/sites/default/documents/edi/history/f278<br />
+
+20220329:150336 _GET request 
+ csvtbllist => yes  csrf_token_form => d70baa152e650824b82c2e03ee82f7c237aa81d4 
+20220329:150336 EDI_History Setup should not overwrite existing data.<br />
+Setup: directory /var/www/html/openemr/sites/default/documents/edi<br />
+created folder /var/www/html/openemr/sites/default/documents/edi/history<br />
+created folder /var/www/html/openemr/sites/default/documents/edi/history/csv<br />
+created folder /var/www/html/openemr/sites/default/documents/edi/history/archive<br />
+created folder /var/www/html/openemr/sites/default/documents/edi/history/log<br />
+created folder /var/www/html/openemr/sites/default/documents/edi/history/tmp
+folder for f837 exists /var/www/html/openemr/sites/default/documents/edi<br />
+folder for f997 exists /var/www/html/openemr/sites/default/documents/edi/history/f997<br />
+folder for f276 exists /var/www/html/openemr/sites/default/documents/edi/history/f276<br />
+folder for f277 exists /var/www/html/openemr/sites/default/documents/edi/history/f277<br />
+folder for f270 exists /var/www/html/openemr/sites/default/documents/edi/history/f270<br />
+folder for f271 exists /var/www/html/openemr/sites/default/documents/edi/history/f271<br />
+folder for f278 exists /var/www/html/openemr/sites/default/documents/edi/history/f278<br />
+folder for f835 exists /var/www/html/openemr/sites/default/documents/edi/history/f835<br />
+
+20220329:150336 _GET request 
+ loglist => yes  csrf_token_form => d70baa152e650824b82c2e03ee82f7c237aa81d4 

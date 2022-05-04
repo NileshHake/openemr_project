@@ -1,0 +1,27 @@
+20220402:030457 _GET request 
+ csvtbllist => yes  csrf_token_form => 593eaffce957ed5bc8d614a013dc758c3c60c428 
+20220402:030457 _GET request 
+ archlist => yes  csrf_token_form => 593eaffce957ed5bc8d614a013dc758c3c60c428 
+20220402:030457 csv_archive_select_list: using /var/www/html/openemr/sites/default/documents/edi/history/archive
+20220402:030457 _GET request 
+ srvinfo => yes  csrf_token_form => 593eaffce957ed5bc8d614a013dc758c3c60c428 
+20220402:030457 _GET request 
+ loglist => yes  csrf_token_form => 593eaffce957ed5bc8d614a013dc758c3c60c428 
+20220402:040459 _GET request 
+ srvinfo => yes  csrf_token_form => 593eaffce957ed5bc8d614a013dc758c3c60c428 
+20220402:040459 _GET request 
+ loglist => yes  csrf_token_form => 593eaffce957ed5bc8d614a013dc758c3c60c428 
+20220402:040459 _GET request 
+ archlist => yes  csrf_token_form => 593eaffce957ed5bc8d614a013dc758c3c60c428 
+20220402:040459 csv_archive_select_list: using /var/www/html/openemr/sites/default/documents/edi/history/archive
+20220402:040459 _GET request 
+ csvtbllist => yes  csrf_token_form => 593eaffce957ed5bc8d614a013dc758c3c60c428 
+20220402:040404 _GET request 
+ srvinfo => yes  csrf_token_form => 593eaffce957ed5bc8d614a013dc758c3c60c428 
+20220402:040404 _GET request 
+ loglist => yes  csrf_token_form => 593eaffce957ed5bc8d614a013dc758c3c60c428 
+20220402:040404 _GET request 
+ csvtbllist => yes  csrf_token_form => 593eaffce957ed5bc8d614a013dc758c3c60c428 
+20220402:040404 _GET request 
+ archlist => yes  csrf_token_form => 593eaffce957ed5bc8d614a013dc758c3c60c428 
+20220402:040404 csv_archive_select_list: using /var/www/html/openemr/sites/default/documents/edi/history/archive
