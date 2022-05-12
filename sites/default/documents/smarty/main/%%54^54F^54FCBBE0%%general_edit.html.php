@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.33, created on 2022-03-31 10:31:35
-         compiled from /var/www/html/openemr/templates/x12_partners/general_edit.html */ ?>
+<?php /* Smarty version 2.6.33, created on 2022-05-06 12:48:47
+         compiled from /var/www/html/nbh_openemr/templates/x12_partners/general_edit.html */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'xlt', '/var/www/html/openemr/templates/x12_partners/general_edit.html', 13, false),array('function', 'html_options', '/var/www/html/openemr/templates/x12_partners/general_edit.html', 58, false),array('modifier', 'attr', '/var/www/html/openemr/templates/x12_partners/general_edit.html', 15, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'xlt', '/var/www/html/nbh_openemr/templates/x12_partners/general_edit.html', 13, false),array('function', 'html_options', '/var/www/html/nbh_openemr/templates/x12_partners/general_edit.html', 58, false),array('modifier', 'attr', '/var/www/html/nbh_openemr/templates/x12_partners/general_edit.html', 15, false),)), $this); ?>
 <form name="x12_partner" method="post" action="<?php echo $this->_tpl_vars['FORM_ACTION']; ?>
 " class='form-horizontal' onsubmit="return top.restoreSession()">
     <div class="form-row my-sm-2">

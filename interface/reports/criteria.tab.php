@@ -286,6 +286,8 @@ for ($TPSCriteriaIndex = 0; $TPSCriteriaIndex < sizeof($TPSCriteriaDataType); $T
                     </li>
                     <li class="list-group-item bg-light"><a id="clear-log" href="#" title='<?php xla('Clear the log'); ?>'><strong><?php echo xlt('Clear Log') ?></strong></a>
                     </li>
+                    <li class="list-group-item bg-light"><a id="retrieve-277-file-from-sftp" href="#" title="" onclick="retrieve277File();"><strong>Retrieve 277 Files from SFTP</strong></a>
+                </li>
                 </ul>
             </div>
         </div>

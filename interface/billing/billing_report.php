@@ -505,6 +505,13 @@ $partners = $x->_utility_array($x->x12_partner_factory());
             }
             return true;
         }
+        function retrieve277File() {
+            //var edi277FileParser = webroot + "/interface/billing/edi277FileParser.php";
+            var edi277FileParser = "edi277FileParser.php";
+            $.get(edi277FileParser,function(data) {
+                alert(data);
+            });
+        }
     </script>
     <?php require_once "$srcdir/../interface/reports/report.script.php"; ?>
     <!-- Criteria Section common javascript page-->
