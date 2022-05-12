@@ -1,14 +1,21 @@
 <?php
 
-if ($_GET['from'] != 'provider' && $_GET['from'] != 'patient') {
+if ($_GET['from'] != 'provider' && $_GET['from'] != 'patient' && !empty($_GET['room'])) {
   die('You are not a authorized user');
 }
+
+
 //die('not authorized user found!');
 // require 'twilio-php-master/src/Twilio/autoload.php';
 $ignoreAuth = true;
 require_once(dirname(__file__) . './../interface/globals.php');
 
 require $GLOBALS['vendor_dir'] . '/twilio/sdk/src/Twilio/autoload.php';
+
+$roomexistCheck = sqlQuery('select * from twilio_rooms where status = 0 AND room = ?',$_GET['room']);
+if(empty($roomexistCheck)){
+  die('Link has been expired');
+}
 
 use Twilio\Jwt\AccessToken;
 use Twilio\Jwt\Grants\VideoGrant;
@@ -67,6 +74,7 @@ $token->addGrant($videoGrant);
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
 <script src="//media.twiliocdn.com/sdk/js/video/releases/2.1.0/twilio-video.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="<?php echo $rootdir;?>/main/tabs/js/tabs_view_model.js"></script>
 <style>
   header#header {
     height: 80px;
@@ -122,7 +130,7 @@ $token->addGrant($videoGrant);
   </header>
   <div class="container">
     <div class="row">
-      <div class="col-md-6 col-sm-12 col-xs-12">
+      <div class="col-md-6 col-sm-6 col-xs-6">
         <div class="panel panel-primary">
           <div class='panel-heading'>
             <h4 class='text-center'><span class="card-title" id="card-title-doctor"></span></h4>
@@ -134,7 +142,7 @@ $token->addGrant($videoGrant);
           </div><!-- card image -->
         </div>
       </div>
-      <div class="col-md-6 col-sm-12 col-xs-12">
+      <div class="col-md-6 col-sm-6 col-xs-6">
         <div class="panel panel-primary">
           <div class='panel-heading'>
             <h4 class='text-center'><span class="card-title" id="card-title-patient"></span></h4>
@@ -325,7 +333,10 @@ $token->addGrant($videoGrant);
           room_name: roomname
         },
         success: function(data) {
-          if (data == 'success') {} else {
+          if (data == 'success') {
+            top.clearPatient();
+            top.tabCloseByName('mr');
+          } else {
             alert('Error');
           }
         },

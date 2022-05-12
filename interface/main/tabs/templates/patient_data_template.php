@@ -49,7 +49,6 @@ switch ($search_any_type) {
 
 ?>
 <script>
-
 var setIntervel = setInterval(teleRequest, 3000);
 
 //Check if any patient tele requests are arrived every 3 seconds
@@ -114,12 +113,20 @@ $.ajax({
             if(<?= $teleConsultNewTab; ?>){
             window.open(obj.provider_uri, '_blank');
             }else{
-            top.left_nav.loadFrame("1","mr","<?php echo '/twilio_ui.php?provider_uri='?>"+obj.provider_uri);
+            //top.left_nav.loadFrame("1","mr","<?php echo '/twilio_ui.php?provider_uri='?>"+obj.provider_uri);
+            lockTheTab(obj.provider_uri,"mr");
+            lockTheTab('../../patient_file/summary/demographics.php?set_pid='+pid,"pat");
+            activateTabByName("mr",true);
             }
         }
         //setIntervel = setInterval(teleRequest, 3000);
     }
 })
+}
+
+function lockTheTab(url,name){
+    let curTab=new tabStatus(xl("Loading") + "...",url,name,'',true,true,true);
+    app_view_model.application_data.tabs.tabsList.push(curTab);
 }
 </script>
 <!-- Tele Request modal -->

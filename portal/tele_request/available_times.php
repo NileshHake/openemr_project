@@ -69,22 +69,20 @@ function CreateSlots($startTime,$endTime,$interval){
 
     while ($startTime <= $endTime) 
     {
-        $returnArray[] = date ("H:i A", $startTime);
+        $returnArray[] = date ("h:i A", $startTime);
         $startTime += $addMins;
     }
     return $returnArray;
 }
 
 function appointmentSlots($providerId,$eventDate){
-    $patientSlotTime = sqlstatement('select pc_eid,pc_startTime,pc_endTime from openemr_postcalendar_events WHERE pc_aid = ? AND pc_eventDate = ? AND pc_pid  != ""',array($providerId,$eventDate));
+    $patientSlotTime = sqlstatement('select pc_eid,pc_startTime,pc_endTime from openemr_postcalendar_events WHERE pc_aid = ? AND pc_eventDate = ? AND pc_pid  = ""',array($providerId,$eventDate));
+  //  print_r($patientSlotTime);
     $returnArray = array();
-    $return = array();
-
-    while($fetch = sqlFetchArray($patientSlotTime)){
-       
+    while($ures = sqlFetchArray($patientSlotTime)){
 
         //$return['eid'] = $fetch['pc_eid'];
-        $returnArray[]  = date ('H:i A',strtotime ($fetch['pc_startTime']));
+        $returnArray[]  = date ('h:i A',strtotime ($ures['pc_startTime']));
         //$return['endTime'] = date ('H:i A',strtotime ($fetch['pc_endTime']));
         //$returnArray[] = $return;
     }
@@ -93,9 +91,8 @@ function appointmentSlots($providerId,$eventDate){
 }
 
 function FindNearbySlot($timeslots,$expected_time){
-
 // $expected_time = "2018-12-15T18:00:00.0000000";
-$timestamp = strtotime($expected_time);
+$timestamp = strtotime($expected_time);//It's a current time as expected time
 $diff = null;
 $index = null;
 
@@ -106,7 +103,6 @@ foreach ($timeslots as $key => $time) {
         $diff = $currDiff;
     }
 }
-
 return $timeslots[$index];
 }
 

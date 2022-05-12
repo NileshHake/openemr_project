@@ -138,6 +138,9 @@
                 });
             });
 
+            $("#teleconsultation").load("./tele_consultation.php?pid=" + {{ patientID | js_url }}, {}, function () {
+            });
+
             $("#medicationlist").load("./get_medications.php", {}, function () {
             });
 
@@ -523,7 +526,8 @@ function teleConsultation(mode, deid) {
                     <h3 class="text-center">{{ 'TeleConsultation' | xlt }}</h3>
 
                     <div class="mb-3">
-                        <a class='btn btn-primary btn-block' href='#' onclick="teleConsultation('add',{{ patientID | attr_js }})">{{ 'Make Consultation' }}</a>
+                                       <!-- <iframe src="{{ web_root | attr }}/portal/tele_consultation.php" class="w-100 vh-100 border-0"></iframe> -->
+                      <!--  <a class='btn btn-primary btn-block' href='#' onclick="teleConsultation('add',{{ patientID | attr_js }})">{{ 'Make Consultation' }}</a> -->
                     </div>
                 </div>
             </div>

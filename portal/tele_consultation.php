@@ -78,9 +78,27 @@ if ($patientid) {
                         <input class="form-control mb-1" type='text' name='form_date' readonly id='form_date' value='<?php echo $today;?>' />
                     </div>
                 </div>
-
-<!-- Provider Carousel -->
+                <!-- Reason -->
+                <input type="hidden" name='form_provider_id' id='form_provider_id'>
                 <div class="row">
+                    <div class="input-group col-12">
+                        <label class="mr-2"><?php echo xlt('Reason'); ?>:</label>
+                        <input class="form-control" type='text' size='40' name='form_reason' id="form_reason" value='' title='<?php echo xla('Optional information about this event'); ?>' />
+                    </div>
+                </div><br>
+                <!-- Checkbox -->
+                <div class="row form-group">
+                <div class="custom-control custom-radio col-12 col-md-6">
+                        <input type="radio" class="custom-control-input" id="particular_provider" name="tele_request_type">
+                        <label class="mr-2 custom-control-label" for="particular_provider"><strong><?php echo xlt('Consult with particular provider'); ?></strong></label>
+                    </div>
+                    <div class="custom-control custom-radio col-12 col-md-6">
+                        <input type="radio" class="custom-control-input" id="dynamic_provider" name="tele_request_type">
+                        <label class="mr-2 custom-control-label" for="dynamic_provider"><strong><?php echo xlt('Consult with most popular providers'); ?></strong></label>
+                    </div>
+                </div>
+<!-- Provider Carousel -->
+                <div class="row provider_carousel">
                 <div class="top-content">
     <div class="container-fluid">
         <div id="carousel-example" class="carousel slide" data-ride="carousel">
@@ -103,14 +121,16 @@ if ($patientid) {
                 $providerSlots = findSlot($urow['id'],$today);
                 //patient booking slots
                 $appointments = appointmentSlots($urow['id'],$today);
+                //print_r($appointments);
+                if(!empty($appointments)){
                 //Filter only availability slots ignor the booked slot
                 $arrayDiff = array_diff($providerSlots['slots'],$appointments);
-                
-                $t = date("H:i A",time());
-                //print_r('current time'.$t);
+                $t = date("h:i A",time());
+                //  print_r('current time'.$t);
                 $slot = FindNearbySlot($arrayDiff,$t);
-                //print_r('closesttime'.$slot);
+                 //print_r('closesttime'.$slot);
                 $diffs = differenceInHours($t,$slot);
+                }
                    
             ?>
                 <div class="card d-none d-md-block">
@@ -124,18 +144,21 @@ if ($patientid) {
                    <span class="badge badge-primary "><i class="fa fa-stethoscope"></i> <?= (ucwords($urow['specialty']) ? $urow['specialty'] : 'Family Medicine'); ?></span>
                    <?php if($providerSlots['response_code'] == 1)echo '<span class="badge badge-success ">AVAILABLE TODAY</span>'?>
                  </div>
-              </div>
-              <div style="min-height:45px">
-                         <?php if($diffs['hr'] != 0 || $diffs['min'] != 0 ){
-                             echo '<p class="card-text">Provider will available after '. $diffs['hr'] . ' Hours ' . $diffs['min'] . ' Min ' .'</p>';
-                         };?>   
+              </div><br>
+              <div style="min-height:45px;text-align:center">
+                         <?php if(($diffs['hr'] != 0 || $diffs['min'] != 0) && $providerSlots['response_code'] == 1){
+                           $minOrHr =  $diffs['hr'] == 0 ? $diffs['min'] . ' Min ' : $diffs['hr'] . ' Hours ' . $diffs['min'] . ' Minutes ';
+                             echo '<strong class="card-text">Provider will be available in '. $minOrHr .'</strong>';
+                         }else{
+                            echo '<strong class="card-text">Provider not available</strong>';
+                         }?>   
               </div>
         </div>
         <!-- Sample provider id input -->
         <input type="hidden" class="provider_reuse" value="<?= $urow['id']?>">
         <!-- Footer Area -->
         <div class="card-footer bg-white footer_div">
-        <a class="btn btn-primary availaible_btn" data-provider='<?= $urow['id'] ?>' onclick='checkAvailabileSlots(this)'>Check Available</a>
+        <!-- <a class="btn btn-primary availaible_btn" data-provider='<?= $urow['id'] ?>' onclick='checkAvailabileSlots(this)'>Check Available</a> -->
         </div>
       </div>
                 </div>
@@ -155,13 +178,7 @@ if ($patientid) {
     </div>
 </div>
                 </div><br>
-                <input type="hidden" name='form_provider_id' id='form_provider_id'>
-                <div class="row">
-                    <div class="input-group col-12">
-                        <label class="mr-2"><?php echo xlt('Reason'); ?>:</label>
-                        <input class="form-control" type='text' size='40' name='form_reason' id="form_reason" value='' title='<?php echo xla('Optional information about this event'); ?>' />
-                    </div>
-                </div>
+                
                 <div class="row input-group my-1">
                     <button type='button' name='form_save' class='btn btn-success savebtn' onsubmit='return false' onclick="request()"/><span class="spinner-grow spinner-grow-sm" id ="loadingspan"></span> <span id="loadingtext">Make Consultation</span></button>
                 </div>
@@ -171,7 +188,32 @@ if ($patientid) {
 <script type='text/javascript'>
 $(document).ready(function(){
     $('#loadingspan').hide();
+    $('.provider_carousel').hide();
+    $('.savebtn').hide();
+
+    $("input[name=tele_request_type]").click(function(){
+        if ($("#particular_provider").is(":checked")) {
+        // alert('vanakkam da mapla particular provider la irunthu');
+        $('#form_provider_id').val('');
+        $('.provider_carousel').show();
+        $('.savebtn').hide();
+        // changeTeleRequestUI();
+        }else if($("#dynamic_provider").is(":checked")){
+            // alert('vanakkam da mapla dynamic provider la irunthu');
+            $('#form_provider_id').val('');
+            $('.provider_carousel').hide();
+            $('.savebtn').show();
+        }
+    });
+    
 });
+function changeTeleRequestUI(){
+
+}
+function tele_request_type(){
+    var particular_provider;
+    var dynamic_provider;
+}
 function request(){
     var provId = $('#form_provider_id').val();
     if(provId != ''){
@@ -191,7 +233,7 @@ $.ajax({
    }
  });
     }else{
-        //If any provider are not selected we send request to all providers
+        //If provider are not selected we send request to all providers
         buttonClicked();
        var providerIds = <?php echo $providerIds;?>;
        
@@ -224,9 +266,10 @@ $.ajax({
             if(nrr.response_code == 1){
               
               requestId = nrr.response_id;
+              doctorAvailable(requestId);
+
             }
            }
-           doctorAvailable(requestId);
         }, count * 10000);
         count++;
         
@@ -328,11 +371,14 @@ $('.card').on('click',function(){
     $(this).css({"box-shadow":"0 10px 22px 0 rgb(0 0 0 / 46%), 0 28px 44px 0 rgb(0 0 0 / 43%)"});
     var provId = $(this).find('.provider_reuse').val();
     $('#form_provider_id').val(provId);
+    $('.savebtn').show();
 });
 /*
     Carousel
 */
-
+$('.carousel').carousel({
+  interval: false,
+});
 $('#carousel-example').on('slide.bs.carousel', function (e) {
     /*
         CC 2.0 License Iatek LLC 2018 - Attribution required

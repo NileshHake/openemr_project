@@ -49,16 +49,6 @@ echo json_encode($requestData);
 
     $response['response_code'] = 3;
 
-    }elseif(!empty($_POST['tele_request_id']) && $_GET['use'] == 'end_meeting'){
-
-        $data_twilio = sqlQuery("UPDATE twilio_rooms set status = 1 where tele_request_id = ?",$_POST['tele_request_id']);
-    
-        //User end meeting to change user status as availble
-        $updateuserstatus = sqlQuery("update users set status = 1 where id = ?",$_SESSION['authUserID']);
-    
-        $updateTwilioRoom = updateTwilioRoom($_POST['room_name'],'completed');
-        echo 'success';
-        
     }else {
     $status = 'Accept';
         
@@ -79,6 +69,16 @@ echo json_encode($requestData);
 
 
     echo json_encode($response);
+    
+}elseif(!empty($_POST['tele_request_id']) && $_GET['use'] == 'end_meeting'){
+
+    $data_twilio = sqlQuery("UPDATE twilio_rooms set status = 1 where tele_request_id = ?",$_POST['tele_request_id']);
+
+    //User end meeting to change user status as availble
+    $updateuserstatus = sqlQuery("update users set status = 1 where id = ?",$_SESSION['authUserID']);
+
+    //$updateTwilioRoom = updateTwilioRoom($_POST['room_name'],'completed');
+    echo 'success';
     
 }else{
     $status['response_code'] = 2;
