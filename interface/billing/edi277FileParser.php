@@ -5,15 +5,15 @@ require_once "../globals.php";
 require("$srcdir/FTPConnect277.php");
 
 
-/*$ftp_server = 'SFTP1.CLAIMSNET.COM';
-$ftp_user_name = '115244';
-$ftp_user_pass = '^}#Q|h1>';
-$ftp_server_dir = '/test/';*/
+// $ftp_server = 'SFTP1.CLAIMSNET.COM';
+// $ftp_user_name = '115244';
+// $ftp_user_pass = '^}#Q|h1>';
+// $ftp_server_dir = '/test/';
 
-$ftp_server = 'ftp10.officeally.com';
-$ftp_user_name = 'kloutisuc';
-$ftp_user_pass = 'Dls3oKgQly';
-$ftp_server_dir = '../../sites/default/documents/edi';
+// $ftp_server = 'ftp10.officeally.com';
+// $ftp_user_name = 'kloutisuc';
+// $ftp_user_pass = 'Dls3oKgQly';
+// $ftp_server_dir = '../../sites/default/documents/edi';
 
 $clearhousesql = sqlStatement("select * from globals where gl_name in('clearing_house_host_name','clearing_house_user_name','clearing_house_pass_name','clearing_house_277_imp_dir')");
 

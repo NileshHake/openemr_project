@@ -51,3 +51,22 @@ CREATE TABLE `twilio_rooms` (
 PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 #EndIf
+
+-- Clearing House
+#IfNotTable claims_status277
+CREATE TABLE `claims_status277` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `claimid` varchar(250) DEFAULT NULL,
+  `claim_status_category_code` text DEFAULT NULL,
+  `claim_status_code` text DEFAULT NULL,
+  `entity_identifier_code` text DEFAULT NULL,
+  `date_received` date DEFAULT NULL,
+  `version` text DEFAULT NULL,
+  `date_update` date DEFAULT NULL,
+  `pid` int(11) DEFAULT NULL,
+  `encounter` int(11) DEFAULT NULL,
+  `statusReasonCode` text DEFAULT NULL,
+  `status` text DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB;
+#EndIf

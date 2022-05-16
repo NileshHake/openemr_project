@@ -3518,6 +3518,30 @@ $GLOBALS_METADATA = array(
             xl('Default state of New Window checkbox in the patient.')
         ),
        //
+       'clearing_house_host_name' => array(
+        xl('Clearing house Host Name'),
+        'text',                           // data type
+        '',
+        xl('SFTP Server')
+    ),
+    'clearing_house_user_name' => array(
+        xl('Clearing house User Name'),
+        'text',                           // data type
+        '',
+        xl('SFTP User Name')
+    ),
+    'clearing_house_pass_name' => array(
+        xl('Clearing house Password'),
+        'encrypted',                           // data type
+        '',
+        xl('SFTP User password')
+    ),
+    'clearing_house_277_imp_dir' => array(
+        xl('Clearing house Import Directory'),
+        'text',                           // data type
+        '',
+        xl('Clearin House 277 Importing Directory')
+    ),
         'easipro_enable' => array(
             xl('Enable Easipro'),
             'bool',                           // data type
